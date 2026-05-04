@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jeet Kune Do München — Der Weg der abfangenden Faust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--reis); color: var(--text-primary-on-reis); }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  /* ---------- Plate ---------- */
+  .plate { padding: 96px 32px; }
+  .plate--sumi  { background: var(--sumi);      color: var(--text-primary-on-sumi); }
+  .plate--reis  { background: var(--reis);      color: var(--text-primary-on-reis); }
+  .plate--warm  { background: var(--sumi-warm); color: var(--text-primary-on-sumi); }
+  .plate--deep  { background: var(--sumi-deep); color: var(--text-primary-on-sumi); }
+  .container { max-width: 1080px; margin: 0 auto; }
+
+  /* ---------- Eyebrow ---------- */
+  .eyebrow { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass); }
+  .eyebrow--stein { color: var(--stein); }
+
+  /* ---------- Display headlines ---------- */
+  .display { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.01em; margin: 0; }
+  .display .it { font-style: italic; color: var(--brass); }
+  .h1 { font-family: var(--font-display); font-weight: 400; font-size: 40px; line-height: 1.15; letter-spacing: -0.01em; margin: 0; }
+  .h2 { font-family: var(--font-display); font-weight: 400; font-size: 24px; line-height: 1.25; margin: 0; }
+
+  /* ---------- Buttons ---------- */
+  .btn-primary { display: inline-block; background: var(--sumi); color: var(--reis); padding: 14px 26px; border: 0; border-radius: 0; font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: opacity 200ms ease-out; }
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-outlined { display: inline-block; background: transparent; color: var(--brass); padding: 14px 26px; border: 0.5px solid var(--brass); border-radius: 0; font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background 200ms ease-out; }
+  .btn-outlined:hover { background: rgba(184, 147, 90, 0.10); }
+
+  .link-arrow { font-family: var(--font-display); font-style: italic; font-size: 17px; color: var(--brass); text-decoration: none; display: inline-flex; align-items: baseline; gap: 6px; }
+  .link-arrow .arr { transition: transform 200ms ease-out; }
+  .link-arrow:hover .arr { transform: translateX(3px); }
+
+  /* ---------- Chop seal ---------- */
+  .chop { display: inline-flex; align-items: center; justify-content: center; background: var(--tusche); color: var(--reis); font-family: var(--font-cjk); }
+  .chop--40 { width: 40px; height: 40px; font-size: 24px; transform: rotate(-3deg); }
+  .chop--56 { width: 56px; height: 56px; font-size: 34px; transform: rotate(2deg); }
+  .chop--80 { width: 80px; height: 80px; font-size: 50px; transform: rotate(-4deg); }
+  .chop-shifu { width: 56px; height: 56px; transform: rotate(3deg); display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: var(--tusche); color: var(--reis); font-family: var(--font-cjk); font-size: 20px; line-height: 1; }
+
+  /* ---------- Header ---------- */
+  .header { position: sticky; top: 0; z-index: 10; background: var(--sumi); color: var(--reis); padding: 14px 32px; border-bottom: 0.5px solid rgba(242, 237, 227, 0.08); }
+  .header__inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
+  .header__logo { width: 56px; height: 56px; background: var(--sumi); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .header__logo img { width: 48px; height: 48px; display: block; }
+  .header__wm { font-family: var(--font-display); font-size: 18px; letter-spacing: 0.06em; }
+  .header__nav { margin-left: auto; display: flex; gap: 32px; }
+  .header__nav a { font-family: var(--font-body); font-size: 13px; text-decoration: none; color: var(--reis); opacity: 0.85; transition: opacity 200ms ease-out, color 200ms ease-out; cursor: pointer; }
+  .header__nav a:hover { opacity: 1; }
+  .header__nav a.is-active { color: var(--brass); opacity: 1; }
+  .header__cta { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brass); border: 0.5px solid var(--brass); padding: 10px 18px; text-decoration: none; transition: background 200ms ease-out; cursor: pointer; }
+  .header__cta:hover { background: rgba(184, 147, 90, 0.10); }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding: 140px 32px 120px; overflow: hidden; }
+  .hero__watermark { position: absolute; top: 50%; right: -40px; transform: translateY(-50%); font-family: var(--font-cjk); font-weight: 400; font-size: 580px; color: var(--brass); opacity: 0.06; line-height: 1; user-select: none; pointer-events: none; }
+  .hero__inner { position: relative; max-width: 1080px; margin: 0 auto; }
+  .hero__eyebrow { margin-bottom: 28px; }
+  .hero__sub { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: rgba(242, 237, 227, 0.72); max-width: 540px; margin-top: 28px; }
+  .hero__cta { margin-top: 44px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero__meta { display: flex; gap: 32px; margin-top: 80px; padding-top: 24px; border-top: 0.5px solid rgba(242, 237, 227, 0.18); max-width: 720px; }
+  .hero__meta > div { display: flex; flex-direction: column; gap: 6px; }
+  .hero__meta .num { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 28px; color: var(--brass); line-height: 1; }
+  .hero__meta .lab { font-family: var(--font-body); font-size: 11.5px; letter-spacing: 0.06em; color: rgba(242, 237, 227, 0.6); }
+
+  /* ---------- Philosophie ---------- */
+  .philo { position: relative; }
+  .philo__inner { max-width: 760px; margin: 0 auto; text-align: center; position: relative; }
+  .philo__seal { position: absolute; right: 0; top: -18px; }
+  .philo__quote { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 32px; line-height: 1.4; color: var(--text-primary-on-reis); margin: 18px 0 0; }
+  .philo__attr { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass); margin-top: 28px; }
+
+  /* ---------- Disziplinen ---------- */
+  .disz__head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 56px; }
+  .disz__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .disz__cell { padding: 0 24px; border-left: 0.5px solid rgba(184, 147, 90, 0.28); }
+  .disz__cell:first-child { border-left: 0; padding-left: 0; }
+  .disz__cjk { font-family: var(--font-cjk); font-size: 56px; line-height: 1; }
+  .disz__num { font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--brass); margin-top: 16px; letter-spacing: 0.04em; }
+  .disz__name { font-family: var(--font-display); font-size: 22px; line-height: 1.2; margin-top: 6px; }
+  .disz__desc { font-family: var(--font-body); font-size: 13px; line-height: 1.65; color: rgba(242, 237, 227, 0.62); margin-top: 12px; }
+
+  /* ---------- Sifu ---------- */
+  .sifu__grid { display: grid; grid-template-columns: 320px 1fr; gap: 60px; align-items: start; }
+  .sifu__photo { position: relative; }
+  .sifu__photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(1) contrast(1.08) brightness(0.95); }
+  .sifu__photo .seal-shifu { position: absolute; top: 18px; right: -22px; }
+  .sifu__body p { margin: 0 0 18px; font-family: var(--font-body); font-size: 15px; line-height: 1.75; max-width: 56ch; }
+  .sifu__body p:last-child { margin-bottom: 0; }
+  .sifu__numbers { display: flex; gap: 48px; margin-top: 32px; padding-top: 28px; border-top: 0.5px solid rgba(110, 106, 96, 0.32); }
+  .sifu__numbers > div { display: flex; flex-direction: column; gap: 4px; }
+  .sifu__numbers .num { font-family: var(--font-display); font-style: italic; font-size: 32px; line-height: 1; color: var(--text-primary-on-reis); }
+  .sifu__numbers .lab { font-family: var(--font-body); font-size: 11.5px; color: var(--stein); letter-spacing: 0.04em; }
+
+  /* ---------- Training ---------- */
+  .train__head { margin-bottom: 56px; }
+  .train__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .train__cell { padding: 32px 28px 28px; border-left: 0.5px solid rgba(184, 147, 90, 0.22); }
+  .train__cell:first-child { border-left: 0; padding-left: 0; }
+  .train__lab { font-family: var(--font-body); font-weight: 500; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass); }
+  .train__name { font-family: var(--font-display); font-size: 26px; margin-top: 14px; }
+  .train__desc { font-family: var(--font-body); font-size: 13.5px; line-height: 1.7; color: rgba(242, 237, 227, 0.7); margin-top: 14px; }
+  .train__price { font-family: var(--font-display); font-style: italic; color: var(--brass); margin-top: 22px; font-size: 17px; }
+
+  /* ---------- Schedule ---------- */
+  .schedule { margin-top: 72px; padding-top: 40px; border-top: 0.5px solid rgba(184, 147, 90, 0.22); display: grid; grid-template-columns: 220px 1fr; gap: 56px; align-items: start; }
+  .schedule__lab { padding-top: 8px; }
+  .schedule__rows { display: grid; gap: 0; }
+  .schedule__row { display: grid; grid-template-columns: 1fr auto auto; align-items: baseline; gap: 32px; padding: 18px 0; }
+  .schedule__day { font-family: var(--font-display); font-size: 32px; line-height: 1; color: var(--reis); }
+  .schedule__time { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--brass); letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }
+  .schedule__dur { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stein); }
+  .schedule__rule { height: 0; border-top: 0.5px solid rgba(184, 147, 90, 0.18); }
+  .schedule__note { grid-column: 2; margin: 18px 0 0; font-family: var(--font-display); font-style: italic; font-size: 15px; color: var(--stein); }
+
+  /* ---------- CTA plate ---------- */
+  .cta { position: relative; text-align: center; overflow: hidden; }
+  .cta__wm { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: var(--font-cjk); font-size: 460px; color: var(--brass); opacity: 0.07; line-height: 1; user-select: none; pointer-events: none; }
+  .cta__inner { position: relative; max-width: 720px; margin: 0 auto; }
+  .cta__buttons { margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta__buttons .btn-outlined { color: var(--text-primary-on-reis); border-color: var(--text-primary-on-reis); }
+  .cta__buttons .btn-outlined:hover { background: rgba(0,0,0,0.04); }
+
+  /* ---------- Footer ---------- */
+  .foot__grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px; }
+  .foot__col h3 { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass); margin: 0 0 18px; }
+  .foot__col a, .foot__col p { font-family: var(--font-body); font-size: 13px; line-height: 1.85; color: rgba(242, 237, 227, 0.7); text-decoration: none; display: block; margin: 0; transition: color 200ms ease-out; cursor: pointer; }
+  .foot__col a:hover { color: var(--reis); }
+  .foot__bottom { max-width: 1080px; margin: 80px auto 0; padding-top: 24px; border-top: 0.5px solid rgba(242, 237, 227, 0.12); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .foot__lockup { display: flex; align-items: center; gap: 14px; }
+  .foot__lockup img { width: 48px; height: 48px; }
+  .foot__lockup span { font-family: var(--font-display); font-style: italic; font-size: 14px; color: rgba(242, 237, 227, 0.55); }
+  .foot__legal { font-family: var(--font-body); font-size: 11.5px; color: rgba(242, 237, 227, 0.45); display: flex; gap: 18px; }
+
+  /* ---------- Cookie banner ---------- */
+  .cookie { position: fixed; left: 0; right: 0; bottom: 0; background: var(--sumi-deep); color: var(--reis); padding: 14px 32px; border-top: 0.5px solid rgba(242, 237, 227, 0.12); display: flex; gap: 24px; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 12.5px; z-index: 20; }
+  .cookie button { font-family: var(--font-body); font-weight: 500; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; padding: 8px 16px; border-radius: 0; cursor: pointer; transition: opacity 200ms ease-out; }
+  .cookie .accept { background: var(--reis); color: var(--sumi); border: 0; }
+  .cookie .decline { background: transparent; color: var(--brass); border: 0.5px solid var(--brass); }
+  .cookie button:hover { opacity: 0.85; }
+  .cookie.is-hidden { display: none; }
+
+  /* ---------- Modal (Probetraining form) ---------- */
+  .modal-bg { position: fixed; inset: 0; background: rgba(14, 14, 14, 0.85); display: flex; align-items: center; justify-content: center; z-index: 30; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 200ms ease-out; }
+  .modal-bg.is-open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--reis); color: var(--text-primary-on-reis); padding: 56px 56px 48px; max-width: 520px; width: 100%; position: relative; }
+  .modal__close { position: absolute; top: 18px; right: 22px; background: none; border: 0; font-family: var(--font-body); font-size: 18px; color: var(--stein); cursor: pointer; line-height: 1; }
+  .modal h2 { margin: 0 0 24px; }
+  .modal .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+  .modal .field label { font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stein); }
+  .modal .field input, .modal .field textarea { font-family: var(--font-body); font-size: 14.5px; padding: 10px 0; border: 0; border-bottom: 0.5px solid var(--stein); background: transparent; color: var(--text-primary-on-reis); outline: none; transition: border-color 200ms ease-out; }
+  .modal .field input:focus, .modal .field textarea:focus { border-bottom-color: var(--brass); }
+  .modal .field textarea { resize: vertical; min-height: 70px; }
+  .modal .submit-row { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; }
+  .modal .submit-note { font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--stein); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .header__nav { display: none; }
+    .disz__grid, .train__grid, .foot__grid { grid-template-columns: 1fr; }
+    .disz__cell, .train__cell { border-left: 0; padding: 28px 0; border-top: 0.5px solid rgba(184, 147, 90, 0.22); }
+    .schedule { grid-template-columns: 1fr; gap: 24px; }
+    .schedule__row { grid-template-columns: 1fr auto; }
+    .schedule__dur { display: none; }
+    .schedule__note { grid-column: 1; }
+    .disz__cell:first-child, .train__cell:first-child { border-top: 0; padding-top: 0; }
+    .sifu__grid { grid-template-columns: 1fr; }
+    .hero__watermark { font-size: 380px; right: -80px; }
+    .modal { padding: 36px 28px 28px; }
+  }
+
+  /* ---------- Hero entry fade ---------- */
+  .fade-in { opacity: 0; animation: fadeIn 600ms ease-out forwards; }
+  .fade-in.d1 { animation-delay: 80ms; }
+  .fade-in.d2 { animation-delay: 200ms; }
+  .fade-in.d3 { animation-delay: 360ms; }
+  @keyframes fadeIn { to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HEADER -->
+<header class="header">
+  <div class="header__inner">
+    <div class="header__logo"><img src="assets/jkdm-logo-white.png" alt="JKDM"></div>
+    <div class="header__wm">JKDM</div>
+    <nav class="header__nav">
+      <a class="is-active" data-nav="disziplinen">Disziplinen</a>
+      <a data-nav="sifu">Sifu</a>
+      <a data-nav="notizen">Notizen</a>
+      <a data-nav="studio">Studio</a>
+    </nav>
+    <a class="header__cta" data-open-modal>Probetraining</a>
+  </div>
+</header>
+
+<!-- ============================================================ HERO (Sumi) -->
+<section class="plate plate--sumi hero">
+  <div class="hero__watermark" aria-hidden="true">截</div>
+  <div class="hero__inner">
+    <div class="hero__eyebrow eyebrow fade-in">— Jeet Kune Do · Wing Chun · Selbstverteidigung · Chen Tai Chi —</div>
+    <h1 class="display fade-in d1">Der Weg der<br><span class="it">abfangenden</span> Faust.</h1>
+    <p class="hero__sub fade-in d2">Ein Studio in München. Ein Lehrer seit 1992. Persönlicher Unterricht, abgestimmt auf den Einzelnen.</p>
+    <div class="hero__cta fade-in d3">
+      <a class="btn-outlined" data-open-modal>Probetraining vereinbaren</a>
+      <a class="link-arrow" data-nav="sifu">Über Sifu Dominik <span class="arr">→</span></a>
+    </div>
+    <div class="hero__meta fade-in d3">
+      <div><span class="num">1992</span><span class="lab">Unterrichtet seit</span></div>
+      <div><span class="num">4</span><span class="lab">Disziplinen</span></div>
+      <div><span class="num">München</span><span class="lab">Studio · privat</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PHILOSOPHIE (Reis) -->
+<section class="plate plate--reis philo">
+  <div class="container philo__inner">
+    <div class="chop chop--56 philo__seal" aria-hidden="true">道</div>
+    <div class="eyebrow eyebrow--stein">— Philosophie —</div>
+    <p class="philo__quote">Nimm an, was nützt.<br>Verwirf, was nutzlos ist.<br>Füge hinzu, was dein Eigenes ist.</p>
+    <div class="philo__attr">— Bruce Lee · 1940 – 1973 —</div>
+  </div>
+</section>
+
+<!-- ============================================================ DISZIPLINEN (Sumi) -->
+<section class="plate plate--sumi" id="disziplinen">
+  <div class="container">
+    <div class="disz__head">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px;">— Vier Disziplinen —</div>
+        <h2 class="h1">Eine Schule, vier Praxen.</h2>
+      </div>
+      <a class="link-arrow" style="white-space:nowrap;">Mehr erfahren <span class="arr">→</span></a>
+    </div>
+    <div class="disz__grid">
+      <div class="disz__cell">
+        <div class="disz__cjk">截拳道</div>
+        <div class="disz__num">— i —</div>
+        <div class="disz__name">Jeet Kune Do</div>
+        <div class="disz__desc">Die Kunst des Abfangens. Bruce Lees Synthese — Distanz, Timing, Direktheit.</div>
+      </div>
+      <div class="disz__cell">
+        <div class="disz__cjk">詠春</div>
+        <div class="disz__num">— ii —</div>
+        <div class="disz__name">Wing Chun</div>
+        <div class="disz__desc">Effizienz in der Mittellinie. Struktur, Sensitivität, kurze Distanz.</div>
+      </div>
+      <div class="disz__cell">
+        <div class="disz__cjk">護身</div>
+        <div class="disz__num">— iii —</div>
+        <div class="disz__name">Selbstverteidigung</div>
+        <div class="disz__desc">Praxis unter Druck. Was funktioniert, wenn der Raum eng wird.</div>
+      </div>
+      <div class="disz__cell">
+        <div class="disz__cjk">太極</div>
+        <div class="disz__num">— iv —</div>
+        <div class="disz__name">Chen Tai Chi</div>
+        <div class="disz__desc">Struktur in Bewegung. Langsam genug, um genau zu sein.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SIFU (Reis) -->
+<section class="plate plate--reis" id="sifu">
+  <div class="container">
+    <div class="sifu__grid">
+      <div class="sifu__photo">
+        <img src="assets/shifu-dominik.jpg" alt="Sifu Dominik im Studio">
+        <div class="chop-shifu seal-shifu" aria-hidden="true"><span>師</span><span>父</span></div>
+      </div>
+      <div class="sifu__body">
+        <div class="eyebrow eyebrow--stein" style="margin-bottom:18px;">— Sifu Dominik —</div>
+        <h2 class="h1">Ein Lehrer, eine Linie.</h2>
+        <p style="margin-top:24px;">Sifu Dominik unterrichtet seit 1992. Drei Jahrzehnte Praxis in Jeet Kune Do und Wing Chun, dazu Chen Tai Chi und ein arbeitsbezogenes Selbstverteidigungs-Curriculum. Schüler kommen für einen Monat oder bleiben fünfzehn Jahre.</p>
+        <p>Im Studio passt sich der Unterricht dem Einzelnen an, nicht umgekehrt. Wer kommt, bringt Fragen mit — die Antwort entsteht in der Praxis.</p>
+        <div class="sifu__numbers">
+          <div><span class="num">1992</span><span class="lab">Unterrichtend</span></div>
+          <div><span class="num">33</span><span class="lab">Jahre Studio</span></div>
+          <div><span class="num">4</span><span class="lab">Disziplinen</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TRAINING (Warm Sumi) -->
+<section class="plate plate--warm">
+  <div class="container">
+    <div class="train__head">
+      <div class="eyebrow" style="margin-bottom:16px;">— Training —</div>
+      <h2 class="h1" style="max-width:720px;">Drei Formate. Eine Methode.</h2>
+    </div>
+    <div class="train__grid">
+      <div class="train__cell">
+        <div class="train__lab">— Format · I —</div>
+        <h3 class="train__name">Einzelstunde</h3>
+        <p class="train__desc">60 Minuten. Ein Lehrer, ein Schüler. Tiefe statt Breite. Für gezielte Arbeit an einer Frage, einer Technik, einer Phase.</p>
+        <div class="train__price">Auf Anfrage</div>
+      </div>
+      <div class="train__cell">
+        <div class="train__lab">— Format · II —</div>
+        <h3 class="train__name">Kleingruppe</h3>
+        <p class="train__desc">90 Minuten. Kleine Runde, ein Lehrer. Partnerarbeit, Sensitivitätsübungen, freie Anwendung. Fester wöchentlicher Termin.</p>
+        <div class="train__price">Ab 44 € · pro Monat</div>
+      </div>
+      <div class="train__cell">
+        <div class="train__lab">— Format · III —</div>
+        <h3 class="train__name">Intensiv</h3>
+        <p class="train__desc">Vier Stunden, ein Tag, ein Thema. Drei- bis viermal im Jahr. Für Fortgeschrittene und für Praktizierende anderer Linien.</p>
+        <div class="train__price">Auf Anfrage</div>
+      </div>
+    </div>
+
+    <div class="schedule">
+      <div class="schedule__lab eyebrow">— Wochenplan · Kleingruppe —</div>
+      <div class="schedule__rows">
+        <div class="schedule__row">
+          <div class="schedule__day">Mittwoch</div>
+          <div class="schedule__time">19:00 — 20:30</div>
+          <div class="schedule__dur">90 min</div>
+        </div>
+        <div class="schedule__rule" aria-hidden="true"></div>
+        <div class="schedule__row">
+          <div class="schedule__day">Sonntag</div>
+          <div class="schedule__time">18:00 — 19:30</div>
+          <div class="schedule__dur">90 min</div>
+        </div>
+      </div>
+      <p class="schedule__note">Einzelstunden und Intensiv nach Vereinbarung.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CTA (Reis) -->
+<section class="plate plate--reis cta">
+  <div class="cta__wm" aria-hidden="true">道</div>
+  <div class="cta__inner">
+    <div class="eyebrow eyebrow--stein">— Beginn —</div>
+    <h2 class="h1" style="margin-top:18px; font-size:44px;">Eine Stunde sagt mehr<br>als eine Beschreibung.</h2>
+    <p style="margin-top:22px; font-family:var(--font-body); color:var(--stein); max-width:520px; margin-left:auto; margin-right:auto;">Vereinbare ein Probetraining. 60 Minuten, persönlich, ohne Verpflichtung.</p>
+    <div class="cta__buttons">
+      <a class="btn-primary" data-open-modal>Probetraining vereinbaren</a>
+      <a class="btn-outlined" data-nav="studio">Studio besuchen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER (Sumi-deep) -->
+<footer class="plate plate--deep">
+  <div class="container">
+    <div class="foot__grid">
+      <div class="foot__col">
+        <h3>— Studio</h3>
+        <p>Redlingerstraße 7<br>81735 München</p>
+        <p style="margin-top:14px; font-style:italic; color:var(--brass); font-family:var(--font-display);">Termin nach Vereinbarung</p>
+      </div>
+      <div class="foot__col">
+        <h3>— Praxis</h3>
+        <a>Disziplinen</a>
+        <a>Sifu</a>
+        <a>Training & Preise</a>
+        <a>Notizen</a>
+      </div>
+      <div class="foot__col">
+        <h3>— Kontakt</h3>
+        <a href="/cdn-cgi/l/email-protection#0a60616e27677f6f6469626f644a7d6f68246e6f"><span class="__cf_email__" data-cfemail="711b1a155c1c04141f1219141f310614135f1514">[email&#160;protected]</span></a>
+        <a href="tel:+4901799181652">0179 9181652</a>
+        <a style="margin-top:14px;">Impressum</a>
+        <a>Datenschutz</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <div class="foot__lockup">
+        <img src="assets/jkdm-logo-white.png" alt="JKDM logo">
+        <span>Jeet Kune Do München · seit 1992</span>
+      </div>
+      <div class="foot__legal">
+        <span>© 2026 JKDM</span>
+        <span style="font-family: var(--font-cjk); letter-spacing: 0.2em; color: rgba(184,147,90,0.55);">截拳道</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ COOKIE BANNER -->
+<div class="cookie" id="cookie">
+  <span>Diese Seite nutzt nur technisch notwendige Cookies. Nichts wird geteilt.</span>
+  <button class="accept" onclick="document.getElementById('cookie').classList.add('is-hidden')">Verstanden</button>
+  <button class="decline" onclick="document.getElementById('cookie').classList.add('is-hidden')">Mehr</button>
+</div>
+
+<!-- ============================================================ MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <button class="modal__close" onclick="closeModal()">×</button>
+    <div class="eyebrow eyebrow--stein" style="margin-bottom:14px;">— Probetraining —</div>
+    <h2 class="h1">Eine Stunde, ein Thema.</h2>
+    <p style="margin-top:14px; color:var(--stein); font-size:14px; line-height:1.7;">Schreib uns kurz, wir antworten innerhalb von zwei Tagen.</p>
+
+    <form style="margin-top:28px;" onsubmit="event.preventDefault(); submitForm();">
+      <div class="field"><label>Name</label><input id="f-name" required></div>
+      <div class="field"><label>E-Mail</label><input id="f-email" type="email" required></div>
+      <div class="field"><label>Disziplin · optional</label><input id="f-disz" placeholder="z. B. Wing Chun"></div>
+      <div class="field"><label>Notiz</label><textarea id="f-note" placeholder="Drei Worte genügen."></textarea></div>
+
+      <div class="submit-row">
+        <span class="submit-note">— wir antworten persönlich —</span>
+        <button type="submit" class="btn-primary">Senden</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ---- Modal
+  const modal = document.getElementById('modal');
+  document.querySelectorAll('[data-open-modal]').forEach(el => {
+    el.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('is-open'); });
+  });
+  function closeModal() { modal.classList.remove('is-open'); }
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  function submitForm() {
+    const m = document.querySelector('.modal');
+    m.innerHTML = `
+      <button class="modal__close" onclick="closeModal()">×</button>
+      <div class="eyebrow eyebrow--stein" style="margin-bottom:14px;">— Eingegangen —</div>
+      <h2 class="h1">Danke.</h2>
+      <p style="margin-top:18px; font-family:var(--font-display); font-style:italic; font-size:20px; line-height:1.5; color:var(--text-primary-on-reis);">Sifu Dominik antwortet persönlich, in der Regel innerhalb von zwei Tagen.</p>
+      <div style="margin-top:32px; display:flex; justify-content:flex-end;">
+        <button class="btn-primary" onclick="closeModal()">Schließen</button>
+      </div>`;
+  }
+
+  // ---- Nav active state (no-op on click; visual demo)
+  document.querySelectorAll('[data-nav]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.header__nav a').forEach(a => a.classList.remove('is-active'));
+      const nav = el.getAttribute('data-nav');
+      const target = document.querySelector(`.header__nav [data-nav="${nav}"]`);
+      if (target) target.classList.add('is-active');
+      const section = document.getElementById(nav);
+      if (section) {
+        const top = section.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

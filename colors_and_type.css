@@ -1,0 +1,39 @@
+/* ============================================================
+   JKDM — Colors & Typography
+   Brand Guidelines v1.0 · 2026
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+/* Loaded via Google Fonts in HTML:
+   Cormorant Garamond 300, 400, italic
+   Inter 400, 500
+   Noto Serif SC 400, 500
+*/
+
+:root {
+
+  /* ---------- Color palette ---------- */
+
+  /* Primär */
+  --sumi:      #0E0E0E;   /* Tinte — Hero, Header, Footer */
+  --reis:      #F2EDE3;   /* Reispapier — helle Sektionen */
+
+  /* Akzent */
+  --brass:     #B8935A;   /* Messing — Eyebrows, Zitate, Linien */
+  --stein:     #6E6A60;   /* Stein — Sekundärtext, Metadaten */
+  --tusche:    #8B2F1F;   /* Tusche — Chop-Siegel, CTA-Akzente */
+
+  /* Varianten */
+  --sumi-warm: #1A1612;   /* Warmes Sumi — Training-Sektion */
+  --sumi-deep: #0A0A0A;   /* Tiefes Sumi — Footer */
+
+  /* ---------- Text on backgrounds ---------- */
+  --text-primary-on-sumi: #F2EDE3;   /* Reis auf Sumi */
+  --text-primary-on-reis: #1A1A1A;   /* Fast-Schwarz auf Reis */
+
+  /* ---------- Typography ---------- */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-cjk:     'Noto Serif SC', serif;
+
+}
